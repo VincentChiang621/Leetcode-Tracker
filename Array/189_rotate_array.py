@@ -1,5 +1,5 @@
 # Time: O(N)
-# Space: O(1)
+# Space: O(1) 
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
         """
