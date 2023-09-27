@@ -3,15 +3,14 @@
 # l pointer keeps track of non duplicates, r keeps track of duplicates
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        l = r = 1
-
-
-        while r < len(nums) and l < len(nums):
-            if nums[r] == nums[r-1]:
-                r += 1
+        
+        l = 0
+        
+        for r in range(len(nums)):
+            if nums[r] == nums[l]:
+                continue
             else:
-                nums[l] = nums[r]
                 l += 1
-                r += 1
+                nums[l], nums[r] = nums[r], nums[l]
 
-        return l
+        return l + 1
