@@ -1,6 +1,6 @@
 # Time: O(m + n)
 # Space: O(min(m,n))
-# top, bottom, left, right for 2D traversal
+# hmap for counter
 class Solution:
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
         
