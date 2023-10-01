@@ -7,20 +7,22 @@ class Solution:
         l, r = 0, len(nums) - 1
 
         while l <= r:
-            mid = (l+r)//2
-            if nums[mid] == target:
-                return mid
-
-            # left sorted
-            if nums[mid] - nums[l] >= 0:
-                if nums[l] > target or target > nums[mid]:
-                    l = mid + 1
+            m = (l + r) // 2
+            if nums[m] == target:
+                return m
+            elif nums[r] == target:
+                return r
+            # first half increasing
+            if nums[m] > nums[l]:
+                if target < nums[m] and target >= nums[l]:
+                    r = m - 1
                 else:
-                    r = mid - 1
+                    l = m + 1
+            # second half increasing
             else:
-                if target < nums[mid] or target > nums[r]:
-                    r = mid - 1
+                if target > nums[m] and target <= nums[r]:
+                    l = m + 1
                 else:
-                    l = mid + 1
+                    r = m - 1
         
         return -1
