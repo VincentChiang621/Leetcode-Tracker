@@ -1,5 +1,5 @@
 # Time: O(log(n))
-# Space: O(1)
+# Space: O(1) 
 # binary search: make cases
 class Solution:
     def findMin(self, nums: List[int]) -> int:
