@@ -1,3 +1,6 @@
+# Time: O(n*m)
+# Space: O(n) 
+# hmap to order the alphabets
 class Solution:
     def isAlienSorted(self, words: List[str], order: str) -> bool:
         alphaMap = {}
