@@ -1,0 +1,27 @@
+# Time: O(1)
+# Space: O(n) 
+# 2 hashmaps, one maps id -> [startStation, time], another maps (startStation, endStation) -> [totalT, count]
+class UndergroundSystem:
+
+    def __init__(self):
+        self.idtoStation = {} # id -> [startS, time]
+        self.avgTime = {} # (startS, endS) -> [totalT, count]
+
+    def checkIn(self, id: int, stationName: str, t: int) -> None:
+        self.idtoStation[id] = [stationName, t]
+        
+
+    def checkOut(self, id: int, stationName: str, t: int) -> None:
+        if id in self.idtoStation:
+            key = (self.idtoStation[id][0], stationName)
+            if key not in self.avgTime:
+                self.avgTime[key] = [0,0]
+            
+            time = t - self.idtoStation[id][1]
+            self.avgTime[key][0] += time
+            self.avgTime[key][1] += 1
+
+
+    def getAverageTime(self, startStation: str, endStation: str) -> float:
+        key = (startStation, endStation)
+        return self.avgTime[key][0] / self.avgTime[key][1]
