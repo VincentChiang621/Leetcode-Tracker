@@ -8,21 +8,19 @@ class Solution:
 
         while l <= r:
             m = (l + r) // 2
-            if nums[m] == target:
+            if target == nums[m]: # base case
                 return m
-            elif nums[r] == target:
-                return r
-            # first half increasing
-            if nums[m] > nums[l]:
-                if target < nums[m] and target >= nums[l]:
+
+            # which side is increasing?
+            if nums[l] <= nums[m]:
+                if nums[l] <= target and target < nums[m]:
                     r = m - 1
                 else:
                     l = m + 1
-            # second half increasing
             else:
-                if target > nums[m] and target <= nums[r]:
+                if nums[m] < target and target <= nums[r]:
                     l = m + 1
                 else:
                     r = m - 1
-        
+            
         return -1
