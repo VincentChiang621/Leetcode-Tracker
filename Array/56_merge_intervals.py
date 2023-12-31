@@ -3,18 +3,17 @@
 # sort by first val in interval, then append if non overlap, change val if do overlap
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        output = []
+        res = []
+        intervals.sort()
+        ans = intervals[0]
 
-        def compare(val):
-            return val[0]
-
-        intervals.sort(key=compare)
-
-        output.append(intervals[0])
-        for i in range(1, len(intervals)):
-            if intervals[i][0] <= output[-1][1]:
-                output[-1][1] = max(output[-1][1], intervals[i][1])
+        for n in intervals:
+            if ans[1] < n[0]:
+                res.append(ans)
+                ans = n
             else:
-                output.append(intervals[i])
+                ans[1] = max(ans[1], n[1])
 
-        return output
+        res.append(ans)
+
+        return res
