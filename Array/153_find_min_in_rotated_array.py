@@ -16,7 +16,7 @@ class Solution:
             
         return ans
 
-class Solution:
+class Solution1:
     def findMin(self, nums: List[int]) -> int:
         l, r = 0, len(nums) - 1
         smallest = nums[0]
